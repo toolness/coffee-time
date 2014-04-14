@@ -6,7 +6,7 @@ var charm = require('charm')(process.stdin);
 
 charm.removeAllListeners('^C')
 charm.on('^C', function () {
-  finish(3);
+  finish(3, true);
 })
 
 charm.pipe(process.stdout);
@@ -117,13 +117,14 @@ function go () {
   if (left <= 0) finish();
 }
 
-function finish (extra) {
+function finish (extra, quiet) {
   extra = extra || 0;
+  quiet = quiet || false;
   charm.down(2 + extra);
   charm.left(9);
   charm.cursor(true);
   if (id) clearInterval(id);
-  if (say) exec('say "' + say + '"');
+  if (say && !quiet) exec('say "' + say + '"');
   process.exit(0);
 }
 
