@@ -123,6 +123,7 @@ function finish (extra, quiet) {
   charm.down(2 + extra);
   charm.left(9);
   charm.cursor(true);
+  charm.display('reset');
   if (id) clearInterval(id);
   if (say && !quiet) exec('say "' + say + '"');
   process.exit(0);
