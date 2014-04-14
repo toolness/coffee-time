@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var path = require('path');
 var exec = require('child_process').exec;
 var charm = require('charm')(process.stdin);
